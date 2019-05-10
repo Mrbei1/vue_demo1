@@ -1,15 +1,15 @@
 <template>
-    <div class="content-box">1121212121</div>
+    <div class="home-page">home</div>
 </template>
 
 <script>
     export default {
-        name: "ContentBoxRight"
+        name: "HomePage"
     }
 </script>
 
 <style scoped>
-    .content-box{
+    .home-page{
         background: beige;
         height:100%;
         width:100%;
