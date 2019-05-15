@@ -1,103 +1,88 @@
 <template>
     <div id="app">
         <el-container>
-            <el-header>Header</el-header>
+            <el-header>
+                <div v-model="isCollapse" style="display: inline-block;">
+                    <span @click="CollapseChange" style="display:inline-block;width:60px;height:60px;cursor: pointer;">{{showMsg}}</span>
+                </div>
+                Header
+            </el-header>
             <el-container>
-                <el-aside width="200px">
+                <el-aside v-bind:style="{width:widthChange}">
                     <div class="menu-box">
-                        <!--<el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">-->
-                        <!--<el-radio-button :label="false">展开</el-radio-button>-->
-                        <!--<el-radio-button :label="true">收起</el-radio-button>-->
-                        <!--</el-radio-group>-->
-                        <el-menu default-active="1-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-                            <el-submenu index="1">
+                        <el-menu :default-active="defaultActive" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+                            <el-submenu index="first-level1">
                                 <template slot="title">
                                     <i class="el-icon-location"></i>
                                     <span slot="title">导航一</span>
                                 </template>
                                 <el-menu-item-group>
-                                    <el-menu-item index="1-1">
-                                        <router-link to="home">选项1</router-link>
-                                    </el-menu-item>
-                                    <el-menu-item index="1-2">
-                                        <router-link to="two">选项2</router-link>
+                                    <el-menu-item index="home">
+                                        <router-link class="routerPointer" to="/home">选项1</router-link>
                                     </el-menu-item>
                                 </el-menu-item-group>
                                 <el-menu-item-group>
-                                    <el-menu-item index="1-3">选项3</el-menu-item>
+                                    <el-menu-item index="two">
+                                        <router-link class="routerPointer" to="/two">选项2</router-link>
+                                    </el-menu-item>
                                 </el-menu-item-group>
-                                <el-submenu index="1-4">
+                                <el-menu-item-group>
+                                    <el-menu-item index="three">
+                                        <router-link class="routerPointer" to="/three">选项3</router-link>
+                                    </el-menu-item>
+                                </el-menu-item-group>
+                                <el-submenu index="first-level1">
                                     <span slot="title">选项4</span>
-                                    <el-menu-item index="1-4-1">选项1</el-menu-item>
+                                    <el-menu-item index="four">
+                                        <router-link class="routerPointer2" to="/four">选项4-1</router-link>
+                                    </el-menu-item>
+                                    <el-menu-item index="four1">
+                                        <router-link class="routerPointer2" to="/four1">选项4-2</router-link>
+                                    </el-menu-item>
                                 </el-submenu>
                             </el-submenu>
 
-                            <el-submenu index="2">
+                            <el-submenu index="first-level2">
                                 <template slot="title">
-                                    <i class="el-icon-menu"></i>
+                                    <i class="el-icon-location"></i>
                                     <span slot="title">导航二</span>
                                 </template>
                                 <el-menu-item-group>
-                                    <span slot="title">分组一</span>
-                                    <el-menu-item index="2-1">选项1</el-menu-item>
-                                    <el-menu-item index="2-2">选项2</el-menu-item>
+                                    <el-menu-item index="home2">
+                                        <router-link class="routerPointer" to="/home">选项1</router-link>
+                                    </el-menu-item>
                                 </el-menu-item-group>
-                                <el-menu-item-group title="分组2">
-                                    <el-menu-item index="2-3">选项3</el-menu-item>
-                                </el-menu-item-group>
-                                <el-submenu index="2-4">
-                                    <span slot="title">选项4</span>
-                                    <el-menu-item index="2-4-1">选项1</el-menu-item>
-                                </el-submenu>
-                            </el-submenu>
-
-                            <el-submenu index="3">
-                                <template slot="title">
-                                    <i class="el-icon-document"></i>
-                                    <span slot="title">导航三</span>
-                                </template>
                                 <el-menu-item-group>
-                                    <span slot="title">分组一</span>
-                                    <el-menu-item index="3-1">选项1</el-menu-item>
-                                    <el-menu-item index="3-2">选项2</el-menu-item>
+                                    <el-menu-item index="two2">
+                                        <router-link class="routerPointer" to="/two">选项2</router-link>
+                                    </el-menu-item>
                                 </el-menu-item-group>
-                                <el-menu-item-group title="分组2">
-                                    <el-menu-item index="3-3">选项3</el-menu-item>
-                                </el-menu-item-group>
-                                <el-submenu index="3-4">
-                                    <span slot="title">选项4</span>
-                                    <el-menu-item index="3-4-1">选项1</el-menu-item>
-                                </el-submenu>
-                            </el-submenu>
-
-
-                            <el-submenu index="4">
-                                <template slot="title">
-                                    <i class="el-icon-setting"></i>
-                                    <span slot="title">导航四</span>
-                                </template>
                                 <el-menu-item-group>
-                                    <span slot="title">分组一</span>
-                                    <el-menu-item index="4-1">选项1</el-menu-item>
-                                    <el-menu-item index="4-2">选项2</el-menu-item>
+                                    <el-menu-item index="three2">
+                                        <router-link class="routerPointer" to="/three">选项3</router-link>
+                                    </el-menu-item>
                                 </el-menu-item-group>
-                                <el-menu-item-group title="分组2">
-                                    <el-menu-item index="4-3">选项3</el-menu-item>
-                                </el-menu-item-group>
-                                <el-submenu index="4-4">
+                                <el-submenu index="second-level2">
                                     <span slot="title">选项4</span>
-                                    <el-menu-item index="4-4-1">选项1</el-menu-item>
+                                    <el-menu-item index="four2">
+                                        <router-link class="routerPointer2" to="/four">选项4-1</router-link>
+                                    </el-menu-item>
+                                    <el-menu-item index="four12">
+                                        <router-link class="routerPointer2" to="/four1">选项4-2</router-link>
+                                    </el-menu-item>
                                 </el-submenu>
                             </el-submenu>
                         </el-menu>
                     </div>
                 </el-aside>
                 <el-container>
+                    <!--<el-header>Header</el-header>-->
                     <el-main>
-                        <router-view></router-view>
-                        <!--<HomePage></HomePage>-->
+                        <transition name="fade">
+                            <router-view></router-view>
+                        </transition>
                     </el-main>
-                    <el-footer>Footer</el-footer>
+                    <!--<el-footer>Footer</el-footer>-->
                 </el-container>
             </el-container>
         </el-container>
@@ -106,20 +91,22 @@
 
 <script>
 
-import HomePage from './views/home'
-import TwoPage from './views/two'
+// import HomePage from './views/home'
+// import TwoPage from './views/two'
 
 import  './assets/css/reset.css'
 
 export default {
     name: 'app',
     components: {
-        HomePage,
-        TwoPage
+        // HomePage,
+        // TwoPage
     },
     data() {
         return {
-            isCollapse: false
+            isCollapse: false,
+            showMsg:'收起',
+            widthChange:'160px'
         };
     },
     methods: {
@@ -128,6 +115,22 @@ export default {
         },
         handleClose(key, keyPath) {
             console.log(key, keyPath);
+        },
+        CollapseChange:function(){
+            if(this.isCollapse){
+                this.isCollapse = false;
+                this.showMsg = '收起';
+                this.widthChange = '160px'
+            }else{
+                this.isCollapse = true;
+                this.showMsg = '展开';
+                this.widthChange = 'auto'
+            }
+        }
+    },
+    computed: {
+        defaultActive() {
+            return this.$route.path.split('/').reverse()[0];
         }
     }
 }
@@ -139,14 +142,17 @@ export default {
         height:100%;
         overflow: hidden;
     }
+    .el-container{
+        height:100%;
+    }
     .el-container.is-vertical{
         height:100%;
     }
     .el-header, .el-footer {
         background-color: #B3C0D1;
         color: #333;
-        text-align: center;
-        line-height: 60px;
+        height: 45px !important;
+        line-height: 45px;
     }
 
     .el-aside {
@@ -164,6 +170,15 @@ export default {
         color: #333;
         background-color: #A8EDF3;
     }
+    .el-menu-item-group__title{
+        padding:0;
+    }
+    .el-menu--vertical>ul{
+        background: #f3f4f7;
+    }
+    .el-menu-item.is-active a{
+        color:#409EFF;
+    }
     .menu-box .el-menu.el-menu--inline{
         background: #f3f4f7;
     }
@@ -175,5 +190,21 @@ export default {
     }
     .menu-box{
         text-align: left;
+    }
+    .menu-box>ul{
+        background: #d2dce6;
+        border:none;
+    }
+    .routerPointer,.routerPointer2{
+        cursor: pointer;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        margin-left: -40px;
+        padding-left: 40px;
+    }
+    .routerPointer2{
+        margin-left: -60px;
+        padding-left: 60px;
     }
 </style>
