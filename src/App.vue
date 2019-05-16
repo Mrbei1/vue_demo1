@@ -2,10 +2,44 @@
     <div id="app">
         <el-container>
             <el-header>
-                <div v-model="isCollapse" style="display: inline-block;">
-                    <span @click="CollapseChange" style="display:inline-block;width:60px;height:60px;cursor: pointer;">{{showMsg}}</span>
-                </div>
-                Header
+                <el-row>
+                    <el-col :span="4">
+                        <div v-model="isCollapse" style="display: inline-block;">
+                            <span @click="CollapseChange" style="display:inline-block;width:60px;height:60px;text-align:center;font-size:24px;"><i class="el-icon-s-fold" style="cursor: pointer;"></i></span>
+                        </div>
+                        <span style="font-size:18px;">
+                            后台管理系统
+                        </span>
+                    </el-col>
+                    <el-col :span="16" >
+                        <ul class="header-msg">
+                            <li>设备总数:2</li>
+                            <li>在线数:2</li>
+                            <li>离线数:0</li>
+                            <li>禁用数:0</li>
+                            <li>故障数:0</li>
+                            <li>缺货设备数:1</li>
+                            <li>未启用设备数:0</li>
+                        </ul>
+                    </el-col>
+                    <el-col :span="4">
+                        <ul class="header-right">
+                            <li><i class="el-icon-message-solid" style="font-size:24px;color:#F56C6C;padding-top:18px;"></i></li>
+                            <li>
+                                <el-dropdown trigger="click">
+                                    <img src="../public/21351124.jpeg">
+                                    <el-dropdown-menu slot="dropdown">
+                                        <el-dropdown-item>查看</el-dropdown-item>
+                                        <el-dropdown-item>新增</el-dropdown-item>
+                                        <el-dropdown-item>删除</el-dropdown-item>
+                                    </el-dropdown-menu>
+                                </el-dropdown>
+                            </li>
+                            <li>用户名：root</li>
+                        </ul>
+                    </el-col>
+                </el-row>
+                
             </el-header>
             <el-container>
                 <el-aside v-bind:style="{width:widthChange}">
@@ -14,16 +48,16 @@
                             <el-submenu index="first-level1">
                                 <template slot="title">
                                     <i class="el-icon-location"></i>
-                                    <span slot="title">导航一</span>
+                                    <span slot="title">用户管理</span>
                                 </template>
                                 <el-menu-item-group>
                                     <el-menu-item index="home">
-                                        <router-link class="routerPointer" to="/home">选项1</router-link>
+                                        <router-link class="routerPointer" to="/home">用户列表</router-link>
                                     </el-menu-item>
                                 </el-menu-item-group>
                                 <el-menu-item-group>
                                     <el-menu-item index="two">
-                                        <router-link class="routerPointer" to="/two">选项2</router-link>
+                                        <router-link class="routerPointer" to="/two">新增用户</router-link>
                                     </el-menu-item>
                                 </el-menu-item-group>
                                 <el-menu-item-group>
@@ -45,32 +79,114 @@
                             <el-submenu index="first-level2">
                                 <template slot="title">
                                     <i class="el-icon-location"></i>
-                                    <span slot="title">导航二</span>
+                                    <span slot="title">设备管理</span>
                                 </template>
                                 <el-menu-item-group>
                                     <el-menu-item index="home2">
-                                        <router-link class="routerPointer" to="/home">选项1</router-link>
+                                        <router-link class="routerPointer" to="/home">设备列表</router-link>
                                     </el-menu-item>
                                 </el-menu-item-group>
+                            </el-submenu>
+
+                            <el-submenu index="first-level2">
+                                <template slot="title">
+                                    <i class="el-icon-location"></i>
+                                    <span slot="title">产品管理</span>
+                                </template>
                                 <el-menu-item-group>
-                                    <el-menu-item index="two2">
-                                        <router-link class="routerPointer" to="/two">选项2</router-link>
+                                    <el-menu-item index="home2">
+                                        <router-link class="routerPointer" to="/home">产品列表</router-link>
+                                    </el-menu-item>
+                                    <el-menu-item index="home2">
+                                        <router-link class="routerPointer" to="/home">新增产品</router-link>
                                     </el-menu-item>
                                 </el-menu-item-group>
+                            </el-submenu>
+                            <el-submenu index="first-level2">
+                                <template slot="title">
+                                    <i class="el-icon-location"></i>
+                                    <span slot="title">资源管理</span>
+                                </template>
                                 <el-menu-item-group>
-                                    <el-menu-item index="three2">
-                                        <router-link class="routerPointer" to="/three">选项3</router-link>
+                                    <el-menu-item index="home2">
+                                        <router-link class="routerPointer" to="/home">采购记录</router-link>
+                                    </el-menu-item>
+                                    <el-menu-item index="home2">
+                                        <router-link class="routerPointer" to="/home">新增采购记录</router-link>
                                     </el-menu-item>
                                 </el-menu-item-group>
-                                <el-submenu index="second-level2">
-                                    <span slot="title">选项4</span>
-                                    <el-menu-item index="four2">
-                                        <router-link class="routerPointer2" to="/four">选项4-1</router-link>
+                            </el-submenu>
+
+                            <el-submenu index="first-level2">
+                                <template slot="title">
+                                    <i class="el-icon-location"></i>
+                                    <span slot="title">广告管理</span>
+                                </template>
+                                <el-menu-item-group>
+                                    <el-menu-item index="home2">
+                                        <router-link class="routerPointer" to="/home">广告列表</router-link>
                                     </el-menu-item>
-                                    <el-menu-item index="four12">
-                                        <router-link class="routerPointer2" to="/four1">选项4-2</router-link>
+                                    <el-menu-item index="home2">
+                                        <router-link class="routerPointer" to="/home">新增广告</router-link>
                                     </el-menu-item>
-                                </el-submenu>
+                                </el-menu-item-group>
+                            </el-submenu>
+
+                            <el-submenu index="first-level2">
+                                <template slot="title">
+                                    <i class="el-icon-location"></i>
+                                    <span slot="title">APK管理</span>
+                                </template>
+                                <el-menu-item-group>
+                                    <el-menu-item index="home2">
+                                        <router-link class="routerPointer" to="/home">APK列表</router-link>
+                                    </el-menu-item>
+                                    <el-menu-item index="home2">
+                                        <router-link class="routerPointer" to="/home">新增APK</router-link>
+                                    </el-menu-item>
+                                </el-menu-item-group>
+                            </el-submenu>
+
+                            <el-submenu index="first-level2">
+                                <template slot="title">
+                                    <i class="el-icon-location"></i>
+                                    <span slot="title">数据统计</span>
+                                </template>
+                                <el-menu-item-group>
+                                    <el-menu-item index="home2">
+                                        <router-link class="routerPointer" to="/home">设备月销售统计</router-link>
+                                    </el-menu-item>
+                                    <el-menu-item index="home2">
+                                        <router-link class="routerPointer" to="/home">物资月销售统计</router-link>
+                                    </el-menu-item>
+                                    <el-menu-item index="home2">
+                                        <router-link class="routerPointer" to="/home">设备销售统计</router-link>
+                                    </el-menu-item>
+                                </el-menu-item-group>
+                            </el-submenu>
+
+                            <el-submenu index="first-level2">
+                                <template slot="title">
+                                    <i class="el-icon-location"></i>
+                                    <span slot="title">订单管理</span>
+                                </template>
+                                <el-menu-item-group>
+                                    <el-menu-item index="home2">
+                                        <router-link class="routerPointer" to="/home">订单列表</router-link>
+                                    </el-menu-item>
+                                </el-menu-item-group>
+                            </el-submenu>
+
+                            <el-submenu index="first-level2">
+                                <template slot="title">
+                                    <i class="el-icon-location"></i>
+                                    <span slot="title">修改密码申请</span>
+                                </template>
+                                <el-menu-item-group>
+                                    <el-menu-item index="home2">
+                                        <router-link class="routerPointer" to="/home">申请列表</router-link>
+                                    </el-menu-item>
+                                </el-menu-item-group>
                             </el-submenu>
                         </el-menu>
                     </div>
@@ -142,6 +258,34 @@ export default {
         height:100%;
         overflow: hidden;
     }
+    .header-msg,.header-right{
+        overflow: hidden;
+        padding-left:20px;
+    }
+    .header-msg li{
+        float: left;
+        padding:0px 8px;
+        font-size:14px;
+        margin-top:18px;
+    }
+    .header-right li{
+        float:left;
+        padding:0px 8px;
+        font-size:14px;
+    }
+    .header-right li:nth-child(2){
+        max-height:60px;
+        padding-top:5px;
+    }
+    .el-dropdown{
+        height:54px;
+    }
+    .header-right li:nth-child(2) img{
+        width:50px;
+        height:50px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
     .el-container{
         height:100%;
     }
@@ -151,8 +295,7 @@ export default {
     .el-header, .el-footer {
         background-color: #B3C0D1;
         color: #333;
-        height: 45px !important;
-        line-height: 45px;
+        line-height:60px;
     }
 
     .el-aside {
