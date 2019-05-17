@@ -65,7 +65,7 @@
                                         <router-link class="routerPointer" to="/three">选项3</router-link>
                                     </el-menu-item>
                                 </el-menu-item-group>
-                                <el-submenu index="first-level1">
+                                <el-submenu index="first-level12">
                                     <span slot="title">选项4</span>
                                     <el-menu-item index="four">
                                         <router-link class="routerPointer2" to="/four">选项4-1</router-link>
