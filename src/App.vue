@@ -47,7 +47,7 @@
                         <el-menu :default-active="defaultActive" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
                             <el-submenu index="first-level1">
                                 <template slot="title">
-                                    <i class="el-icon-location"></i>
+                                    <i class="el-icon-s-custom"></i>
                                     <span slot="title">用户管理</span>
                                 </template>
                                 <el-menu-item-group>
@@ -76,7 +76,7 @@
                                 </el-submenu>
                             </el-submenu>
 
-                            <el-submenu index="first-level2">
+                            <!--<el-submenu index="first-level2">
                                 <template slot="title">
                                     <i class="el-icon-location"></i>
                                     <span slot="title">设备管理</span>
@@ -187,7 +187,7 @@
                                         <router-link class="routerPointer" to="/home">申请列表</router-link>
                                     </el-menu-item>
                                 </el-menu-item-group>
-                            </el-submenu>
+                            </el-submenu>-->
                         </el-menu>
                     </div>
                 </el-aside>
